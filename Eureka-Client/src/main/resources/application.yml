@@ -1,0 +1,15 @@
+server:
+  port: 6060
+
+spring:
+  application:
+    name: eureka-client
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7070/eureka
+  instance:
+    instance-id: eureka-client
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
