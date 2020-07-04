@@ -11,6 +11,8 @@
   <modules>
     <module>Eureka-Server</module>
     <module>Oauth-Server</module>
+    <module>Eureka-Client</module>
+    <module>Zuul-Server</module>
   </modules>
 
 
