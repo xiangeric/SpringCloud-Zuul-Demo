@@ -1,0 +1,35 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /uaa
+
+spring:
+  application:
+    name: oauth2-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7070/eureka
+  instance:
+    prefer-ip-address: true
+
+#configure oauth client
+security:
+  clients:
+    settings:
+      zuul_server:
+        clientId: zuul-server
+        secret: secret
+        scopes:
+          - WRIGTH
+          - read
+        authorities:
+          - WRIGTH_READ
+          - WRIGTH_WRITE
+        authorizedGrantTypes:
+          - implicit
+          - refresh_token
+          - password
+          - authorization_code
+        redirectUris: http://localhost:8080/login
