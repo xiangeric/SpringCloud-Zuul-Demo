@@ -4,6 +4,18 @@ server:
 spring:
   application:
     name: zuul-server
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:h2db #基于内存的h2数据库，数据库名为h2db
+    username: sa
+    password: sa
+    schema: classpath:h2/create_db.sql
+    data: classpath:h2/init_db.sql
 
 eureka:
   client:
@@ -19,16 +31,17 @@ zuul:
   #启用debug
   debug:
     request: true
-  routes:
-    eureka-client:
-      path: /client/**
-      serviceId: eureka-client
-      sensitive-headers: Cookie,Set-Cookie #http header 中的敏感信息，默认情况下，ZUUL 是不转发的, OAuth2 的鉴权信息是放在 Authorization 中，所以需要从配置中移除
+#  routes:
+#    eureka-client:
+#      path: /client/**
+#      serviceId: eureka-client
+#      sensitive-headers: Cookie,Set-Cookie #http header 中的敏感信息，默认情况下，ZUUL 是不转发的, OAuth2 的鉴权信息是放在 Authorization 中，所以需要从配置中移除
   host:
     # 配置zuul的超时时间,默认2秒，
     connect-timeout-millis: 2000
     socket-timeout-millis: 2000
   retryable: true
+
 
 hystrix:
   command:
@@ -65,3 +78,4 @@ security:
     resource:
       jwt:
         key-value: springcloud123 #使用对称加密方式，默认算法为HS256
+

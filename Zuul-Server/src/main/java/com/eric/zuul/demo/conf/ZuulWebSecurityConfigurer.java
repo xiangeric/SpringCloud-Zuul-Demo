@@ -13,12 +13,11 @@ public class ZuulWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().disable()
                 .authorizeRequests()
-                .antMatchers("/login", "/client/**")
-                .permitAll()
+                .antMatchers("/login", "/client/**").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .anyRequest()
                 .authenticated()
-                .and()
-                .csrf()
-                .disable();
+                .and().csrf().disable();
+        http.headers().frameOptions().disable();
     }
 }
