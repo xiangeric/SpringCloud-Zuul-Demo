@@ -9,5 +9,6 @@ CREATE TABLE `zuul_route` (
   `retryable` tinyint(1) DEFAULT '0',
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `description` varchar(255) DEFAULT NULL,
+  `zuul_sensitive_headers` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
