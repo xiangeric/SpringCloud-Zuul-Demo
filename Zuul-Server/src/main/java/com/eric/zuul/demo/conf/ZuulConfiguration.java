@@ -11,15 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ZuulConfiguration {
 
-    @Autowired
-    protected ServerProperties server;
-
-    @Autowired
-    protected ZuulProperties zuulProperties;
-
     @Bean
-    public SimpleRouteLocator simpleRouteLocator(){
-        return new DynamicDBRouteLocator(this.server.getServlet().getContextPath(),
-                this.zuulProperties);
+    public SimpleRouteLocator simpleRouteLocator(ServerProperties server,ZuulProperties zuulProperties){
+        return new DynamicDBRouteLocator(server.getServlet().getContextPath(), zuulProperties);
     }
 }

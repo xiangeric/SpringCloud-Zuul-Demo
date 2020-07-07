@@ -23,4 +23,7 @@ public class ZuulRouteEntity implements Serializable {
     private Boolean enabled;
 
     private String description;
+
+    //敏感header
+    private String zuulSensitiveHeaders;
 }
