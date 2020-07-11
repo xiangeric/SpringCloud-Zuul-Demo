@@ -45,7 +45,7 @@ public class DynamicDBRouteLocator extends SimpleRouteLocator implements Refresh
                     zuulRoute.setSensitiveHeaders(headerSets);
                 }
                 String path = zuulRoute.getPath();
-                if(StringUtils.isNotBlank(this.properties.getPrefix())){
+                if(StringUtils.isNotBlank(this.properties.getPrefix()) && this.properties.isStripPrefix()){
                     path = this.properties.getPrefix() + path;
                 }
                 routesMap.put(path,zuulRoute);
