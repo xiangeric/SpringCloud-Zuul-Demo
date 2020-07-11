@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS `zuul_route`;
 
 CREATE TABLE `zuul_route` (
